@@ -1,5 +1,6 @@
 package fizzbuzz;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -25,6 +26,12 @@ public class FizzBuzzShould {
     @ValueSource(ints = {5, 10, 20})
     void return_Buzz_when_multiple_of_5_only(int number) {
         assertEquals("Buzz", fizzBuzz.convert(number));
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {15, 30, 45})
+    void return_Buzz_when_multiple_of_3_and_5(int number) {
+        assertEquals("FizzBuzz", fizzBuzz.convert(number));
     }
 
 }
