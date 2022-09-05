@@ -34,8 +34,13 @@ public class SimpleCalculatorShould {
             "'1\n2\n10',13",
 
             // new-line and comma separated
-            "'1\n2,3', 6",
-            "'1\n2,3\n4,10', 20"
+            "'1\n2,3',6",
+            "'1\n2,3\n4,10', 20",
+
+            // custom separator
+            "'//;\n1;2',3",
+            "'//;\n1;2,3',6",
+            "'//;\n1;2,3\n4',10",
     })
     void return_sum_of_numbers(String numbers, int result) {
         assertEquals(result, calculator.add(numbers));
