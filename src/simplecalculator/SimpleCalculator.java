@@ -36,13 +36,18 @@ public class SimpleCalculator {
 
     private String[] parseNumbers(String numbers) {
 
-        String separators = ",\n";
+        String separators = "[,\n]";
 
         if (numbers.startsWith("//")) {
-            separators += String.valueOf(numbers.charAt(2));
-            numbers = numbers.substring(4);
+            int closeNewLineIndex = numbers.indexOf("\n");
+            // extract custom separator by removing [ and ]
+            String customSeparator = numbers.substring(2, closeNewLineIndex)
+                    .replace("[","").replace("]","");
+            // replace custom separator by , to simplify split
+            numbers = numbers.substring(closeNewLineIndex + 1)
+                    .replace(customSeparator, ",");
         }
 
-        return numbers.split("[" + separators + "]");
+        return numbers.split(separators);
     }
 }

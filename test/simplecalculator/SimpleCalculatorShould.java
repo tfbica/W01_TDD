@@ -41,6 +41,9 @@ public class SimpleCalculatorShould {
             "'//;\n1;2,3',6",
             "'//;\n1;2,3\n4',10",
 
+            // arbitrary length separator
+            "'//[***]\n1***2***3',6",
+
             // ignore when > 1000
             "'1301',0",
             "'1301,2',2",
