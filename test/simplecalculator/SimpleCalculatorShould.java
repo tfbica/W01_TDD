@@ -26,8 +26,6 @@ public class SimpleCalculatorShould {
             "'3,5',8",
             "'3,10',13",
             "'13,23',36",
-            "'1301,2323',3624",
-            "'1301,2323,1000',4624",
             "'1,2,3,4',10",
 
             // new-line separated
@@ -42,6 +40,14 @@ public class SimpleCalculatorShould {
             "'//;\n1;2',3",
             "'//;\n1;2,3',6",
             "'//;\n1;2,3\n4',10",
+
+            // ignore when > 1000
+            "'1301',0",
+            "'1301,2',2",
+            "'3,1301,2',5",
+            "'1301,2323',0",
+            "'1301,2323,1,1000',1001",
+
     })
     void return_sum_of_numbers(String numbers, int result) {
         assertEquals(result, calculator.add(numbers));

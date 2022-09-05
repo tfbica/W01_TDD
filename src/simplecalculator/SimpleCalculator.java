@@ -17,7 +17,14 @@ public class SimpleCalculator {
 
         Integer sum = Arrays.stream(numbersSeparated).
                 map(Integer::parseInt).
-                filter(n -> { if (n < 0) exceptions.add(String.valueOf(n)); return true; }).
+                filter(n -> {
+                    if (n < 0) {
+                        exceptions.add(String.valueOf(n));
+                        return true;
+                    } else {
+                        return n <= 1000;
+                    }
+                }).
                 reduce(0, Integer::sum);
 
         if (exceptions.size() > 0) {
