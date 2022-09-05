@@ -1,55 +1,30 @@
 package fizzbuzz;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FizzBuzzShould {
 
-    @Test
-    void when_1_return_1() {
-        assertEquals("1", new FizzBuzz().convert(1));
+    private final FizzBuzz fizzBuzz = new FizzBuzz();
+    
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 4})
+    void return_string_value_of_integer(int number) {
+        assertEquals(String.valueOf(number), fizzBuzz.convert(number));
     }
 
-    @Test
-    void when_2_return_2() {
-        assertEquals("2", new FizzBuzz().convert(2));
+    @ParameterizedTest
+    @ValueSource(ints = {3, 6, 9})
+    void return_Fizz_when_multiple_of_3_only(int number) {
+        assertEquals("Fizz", fizzBuzz.convert(number));
     }
 
-    @Test
-    void when_4_return_4() {
-        assertEquals("4", new FizzBuzz().convert(4));
-    }
-
-    @Test
-    void when_3_return_Fizz() {
-        assertEquals("Fizz", new FizzBuzz().convert(3));
-    }
-
-    @Test
-    void when_6_return_Fizz() {
-        assertEquals("Fizz", new FizzBuzz().convert(6));
-    }
-
-    @Test
-    void when_9_return_Fizz() {
-        assertEquals("Fizz", new FizzBuzz().convert(9));
-    }
-
-    @Test
-    void when_5_return_Buzz() {
-        assertEquals("Buzz", new FizzBuzz().convert(5));
-    }
-
-    @Test
-    void when_10_return_Buzz() {
-        assertEquals("Buzz", new FizzBuzz().convert(10));
-    }
-
-    @Test
-    void when_20_return_Buzz() {
-        assertEquals("Buzz", new FizzBuzz().convert(20));
+    @ParameterizedTest
+    @ValueSource(ints = {5, 10, 20})
+    void return_Buzz_when_multiple_of_5_only(int number) {
+        assertEquals("Buzz", fizzBuzz.convert(number));
     }
 
 }
