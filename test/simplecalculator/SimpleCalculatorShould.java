@@ -11,4 +11,9 @@ public class SimpleCalculatorShould {
         assertEquals(0, new SimpleCalculator().add(""));
     }
 
+    @Test
+    void return_passed_number_when_just_one_number() {
+        assertEquals(4, new SimpleCalculator().add("4"));
+    }
+
 }
