@@ -1,19 +1,15 @@
 package simplecalculator;
 
-public class SimpleCalculator {
-    public int add(String number) {
+import java.util.Arrays;
 
-        if ("".equals(number)) {
+public class SimpleCalculator {
+    public int add(String numbers) {
+
+        if ("".equals(numbers)) {
             return 0;
         }
 
-        if (number.contains(",")) {
-            String[] arguments = number.split(",");
-
-            return Integer.parseInt(arguments[0])
-                    + Integer.parseInt(arguments[1]);
-        }
-
-        return Integer.parseInt(number);
+        String[] arguments = numbers.split(",");
+        return Arrays.stream(arguments).map(Integer::parseInt).reduce(0, Integer::sum);
     }
 }
