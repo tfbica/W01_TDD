@@ -11,4 +11,14 @@ public class FizzBuzzShould {
     void when_1_return_1() {
         assertEquals("1", new FizzBuzz().convert(1));
     }
+
+    @Test
+    void when_2_return_2() {
+        assertEquals("2", new FizzBuzz().convert(2));
+    }
+
+    @Test
+    void when_4_return_4() {
+        assertEquals("4", new FizzBuzz().convert(4));
+    }
 }
