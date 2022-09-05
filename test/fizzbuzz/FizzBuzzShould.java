@@ -37,4 +37,19 @@ public class FizzBuzzShould {
         assertEquals("Fizz", new FizzBuzz().convert(9));
     }
 
+    @Test
+    void when_5_return_Buzz() {
+        assertEquals("Buzz", new FizzBuzz().convert(5));
+    }
+
+    @Test
+    void when_10_return_Buzz() {
+        assertEquals("Buzz", new FizzBuzz().convert(10));
+    }
+
+    @Test
+    void when_20_return_Buzz() {
+        assertEquals("Buzz", new FizzBuzz().convert(20));
+    }
+
 }
