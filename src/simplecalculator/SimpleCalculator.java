@@ -9,7 +9,7 @@ public class SimpleCalculator {
             return 0;
         }
 
-        String[] arguments = numbers.split(",");
+        String[] arguments = numbers.split("[,\n]");
         return Arrays.stream(arguments).map(Integer::parseInt).reduce(0, Integer::sum);
     }
 }
