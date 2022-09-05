@@ -1,13 +1,19 @@
 package simplecalculator;
 
-import java.util.Objects;
-
 public class SimpleCalculator {
     public int add(String number) {
 
-        if (Objects.equals(number, "")) {
+        if ("".equals(number)) {
             return 0;
         }
-        return Integer.valueOf(number);
+
+        if (number.contains(",")) {
+            String[] arguments = number.split(",");
+
+            return Integer.parseInt(arguments[0])
+                    + Integer.parseInt(arguments[1]);
+        }
+
+        return Integer.parseInt(number);
     }
 }
