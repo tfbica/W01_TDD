@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SimpleCalculatorShould {
 
@@ -44,5 +45,17 @@ public class SimpleCalculatorShould {
     })
     void return_sum_of_numbers(String numbers, int result) {
         assertEquals(result, calculator.add(numbers));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "-4,-4",
+        "'1,-2',-2",
+        "'1,-2,-3',-2 -3",
+    })
+    void throw_exception_when_number_is_negative(String numbers, String exceptionMessage) {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> calculator.add(numbers));
+
+        assertEquals("negatives not allowed: " + exceptionMessage, exception.getMessage());
     }
 }
